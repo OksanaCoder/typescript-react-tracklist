@@ -52,11 +52,11 @@ render () {
           </Container>   
         <Header title="Your tracklist for Anytime" />
 
-         <Route  path='/albums' exact component={Albums} />
+         <Route  path='/album' exact component={Albums} />
           <Route
             path="/album/:id"
             exact
-            render={(props) => <DetailComponent {...props} data={['one', 'two']} />}
+            render={(props) => <DetailComponent {...props} tracks={['one', 'two']} />}
           />
   
       </div>

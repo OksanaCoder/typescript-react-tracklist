@@ -4,14 +4,16 @@ import { HeaderProps } from '../types/types'
 
 interface AlbumState {
     data?: [],
-    searchedMusic: []
+    searchedMusic: any [],
+   
   }
 
 class  Albums extends  React.Component<AlbumState> {
 
     state: AlbumState = {
         data :  [],
-        searchedMusic: []
+        searchedMusic: [], 
+      
       }
       componentDidMount () {
        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=ac/dc",  {
@@ -32,22 +34,23 @@ class  Albums extends  React.Component<AlbumState> {
         return (
             <>
                <Container>
-               <Row className='no-gutters'>
+               <div className='row'>
 
        { this.state.searchedMusic.map(item => {
          return (
-            <Col lg='3'>
-                 <img alt='img' src={item.album.cover_small}/>
+            <Col lg='3' style={{marginBottom : '30px', display: 'flex',  flexDirection: 'column', alignItems: 'center', color: '#fff'}}>
+                 <img alt='img' width='200px' src={item.album.cover_big} style={{borderRadius: '10px'}} className='cover'/>
+                 <small className='mt-3'>{item.album.title}</small>
+
+
             </Col>
 
 )
            
         })}
-                 <Col lg='3'>
-                 
-                 </Col>
+                
               
-               </Row>
+               </div>
              </Container>
             
                </>

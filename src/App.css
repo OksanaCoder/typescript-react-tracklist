@@ -6,6 +6,9 @@ body {
   background: rgb(27,27,27) !important;
 background: linear-gradient(90deg, rgba(27,27,27,1) 0%, rgba(53,75,106,1) 0%, rgba(50,79,115,1) 24%, rgba(4,132,238,1) 72%, rgba(4,132,238,1) 88%) !important;
 }
+.cover {
+  box-shadow: 0px 4px 16px rgba(17,17,26,0.9), 0px 8px 24px rgba(17,17,26,0.9), 0px 16px 56px rgba(17,17,26,0.9);
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
