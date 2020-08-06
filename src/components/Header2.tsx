@@ -12,9 +12,9 @@ const Header = ({ title, subTitle }: HeaderProps) => {
 
   return (
     <>
-      <h1 onClick={() => setCount(count + 1)}>{title}</h1>
+      <h1 style={{color: '#fff', fontSize: '25px', margin: '30px'}}>{title}</h1>
       {subTitle ? <h2>{subTitle}</h2> : <div></div>}
-      <div>{count}</div>
+      {/* <div>{count}</div> */}
     </>
   )
 }

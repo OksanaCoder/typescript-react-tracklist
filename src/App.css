@@ -2,9 +2,9 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: rgb(27,27,27) !important;
+background: linear-gradient(90deg, rgba(27,27,27,1) 0%, rgba(53,75,106,1) 0%, rgba(50,79,115,1) 24%, rgba(4,132,238,1) 72%, rgba(4,132,238,1) 88%) !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {

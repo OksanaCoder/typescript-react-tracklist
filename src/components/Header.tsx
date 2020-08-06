@@ -19,9 +19,9 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   render() {
     return (
       <>
-        <h1 onClick={this.increaseState}>{this.props.title}</h1>
-        {/* {this.props.subTitle ? <h2>{this.props.subTitle}</h2> : <div></div>} */}
-        <div>{this.state.count}</div>
+        <h1 style={{fontSize:'20px', color: '#fff' }}>{this.props.title}</h1>
+        {/* {this.props.subTitle ? <h2>{this.props.subTitle}</h2> : <div></div>}
+        <div>{this.state.count}</div> */}
       </>
     )
   }

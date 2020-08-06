@@ -4,7 +4,7 @@ import { HeaderProps } from '../types/types'
 
 interface AlbumState {
     data?: [],
-    searchedMusic?: []
+    searchedMusic: []
   }
 
 class  Albums extends  React.Component<AlbumState> {
@@ -32,12 +32,12 @@ class  Albums extends  React.Component<AlbumState> {
         return (
             <>
                <Container>
-               <Row>
+               <Row className='no-gutters'>
 
        { this.state.searchedMusic.map(item => {
          return (
             <Col lg='3'>
-                 <img alt='img'/>
+                 <img alt='img' src={item.album.cover_small}/>
             </Col>
 
 )

@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Header from './components/Header2'
 import { Container, Row, Col, Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import DetailComponent from './components/DetailComponent'
 import Albums from './components/Albums'
 // import { HeaderProps } from '../types/types'
@@ -37,22 +37,22 @@ render () {
       <div className="App">
                 
        <Container>         
-        <Navbar bg="dark" variant="dark">
-              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-              <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+        <Navbar style={{padding: '20px'}}>
+              <Navbar.Brand href="#home" style={{color: '#fff'}}>AC/DC</Navbar.Brand>
+              <Nav className="mr-auto ">
+                <Link to="/" className='ml-4 mr-3 text-white'>Home</Link>
+                <Link to="/Albums" className='text-white'>Albums</Link>
+             
               </Nav>
               <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-info">Search</Button>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{borderRadius: '50px', padding: '5px 30px',border: 'none' }}/>
+                <Button variant="outline-info" style={{border: '1px solid #fff', color: '#fff', borderRadius: '50px', padding: '5px 30px'}}>Search</Button>
               </Form>
             </Navbar>
           </Container>   
         <Header title="Your tracklist for Anytime" />
 
-         <Route  path='/albums' exact render={(props) => <Albums />} />
+         <Route  path='/albums' exact component={Albums} />
           <Route
             path="/album/:id"
             exact
