@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import Header from './components/Header2'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import DetailComponent from './components/DetailComponent'
 import Albums from './components/Albums'
@@ -35,8 +35,23 @@ render () {
   return (
     <Router>
       <div className="App">
-         
+                
+       <Container>         
+        <Navbar bg="dark" variant="dark">
+              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+              <Nav className="mr-auto">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="#pricing">Pricing</Nav.Link>
+              </Nav>
+              <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-info">Search</Button>
+              </Form>
+            </Navbar>
+          </Container>   
         <Header title="Your tracklist for Anytime" />
+
          <Route  path='/albums' exact render={(props) => <Albums />} />
           <Route
             path="/album/:id"
