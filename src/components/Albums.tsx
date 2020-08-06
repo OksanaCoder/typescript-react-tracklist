@@ -35,12 +35,12 @@ class  Albums extends  React.Component<AlbumState> {
                <Row>
 
        { this.state.searchedMusic.map(item => {
-       
+         return (
             <Col lg='3'>
                  <img alt='img'/>
             </Col>
 
-
+)
            
         })}
                  <Col lg='3'>
