@@ -1,15 +1,88 @@
-.App {
-  text-align: center;
-}
+/* @import url('https://fonts.googleapis.com/css2?family=Chilanka&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Chilanka&family=Dosis:wght@300;400;500;600;700;800&display=swap');
 
+.search-bar {
+  border: none;
+  border-radius: 50px;
+  padding: 5px 40px;
+  margin: 20px auto;
+}
+.search-bar:focus {
+  outline: none;
+}
 body {
-  background: rgb(27,27,27) !important;
-background: linear-gradient(90deg, rgba(27,27,27,1) 0%, rgba(53,75,106,1) 0%, rgba(50,79,115,1) 24%, rgba(4,132,238,1) 72%, rgba(4,132,238,1) 88%) !important;
+  text-align: center;
+   margin: auto;
+  /* background-image: url('img/rain.jpg'); */
+  /* background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh; */
+  font-family: 'Dosis', sans-serif !important;
+  letter-spacing: 1px;
 }
-.cover {
-  box-shadow: 0px 4px 16px rgba(17,17,26,0.9), 0px 8px 24px rgba(17,17,26,0.9), 0px 16px 56px rgba(17,17,26,0.9);
+.back-rain {
+    background-image: url('img/rain.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    font-family: 'Dosis', sans-serif !important;
 }
+.back-raining {
+  background-image: url('img/raining.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Dosis', sans-serif !important;
+}
+.back-sun {
+  background-image: url('img/sun.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Dosis', sans-serif !important;
+}
+.btn:focus {
+   outline: none;
+}
+.back-sun-1 {
+  background-image: url('img/sun-1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Dosis', sans-serif !important;
+}
+.back-sun-2 {
+  background-image: url('img/sun-2.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Dosis', sans-serif !important;
+}
+.back-evening {
+  background-image: url('img/evening.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Dosis', sans-serif !important;
+}
+.weather-box {
+  line-height: 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20% auto;
+  text-align: center;
+  align-items: center;
 
+}
+.temp {
+  text-shadow: 5px 8px 6px rgba(14, 13, 13, 0.55);
+}
+.temp::after {
+  content: "\00B0";
+  position: absolute;
+
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

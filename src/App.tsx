@@ -1,69 +1,114 @@
-import React from 'react'
-import './App.css'
-import Header from './components/Header2'
-import { Container, Row, Col, Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import DetailComponent from './components/DetailComponent'
-import Albums from './components/Albums'
-// import { HeaderProps } from '../types/types'
+import React, { Component, useState, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Col, Row } from 'react-bootstrap'
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
+
+
+const App  = () => {
+
+  const [query, setQuery]:  any = useState('')
+  const [weather, setWeather] :  any = useState({})
+  const  key = `4db3037f078521b122cfe50c8b39df46`
+  // const  url = `api.openweathermap.org/data/2.5/weather?q=${query}&appid=${key}`
+const url = "https://api.openweathermap.org/data/2.5/"
+
+    const search = (e) => {
+    // if (evt.key === 'Enter') {
+      // e.preventDefault()
+       fetch(`${url}weather?q=${query}&appid=${key}&units=metric`)
+      // fetch(`${url}forecast/daily?q=${query}&cnt=6&appid=${key}&units=metric`)
+       .then(resp => resp.json())
+       .then(result => {
+         setWeather(result);
+         setQuery('');
+         console.log(weather)
+       })
+      // }
+
+    }
+  
+   useEffect (() => {
+    search ()
+   },[])
 
 
 
 
+      const dateBuilder = (d) =>  {
+          let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",  "November", "December"];
+          let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satuarday"];
+            let  day = days[d.getDay()];
+            let  date = d.getDate();
+            let month = months[d.getMonth()];
+            let  year =  d.getFullYear();
 
-class App extends React.Component {
 
+            return `${day} ${date} ${month} ${year}`
 
-
-    //  componentDidMount () {
-    //   fetch("https://deezerdevs-deezer.p.rapidapi.com/search"+ "?q="+ searchString , {
-    //     "method": "GET",
-    //     "headers": {
-    //         "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-    //         "x-rapidapi-key": "8275c582bamshd83a3179dd00459p19f0b2jsn94c889368579"
-    //     }
-    // })
-    //   .then((response) => response.json())
-    //   .then((responseObject) =>
-    //     this.setState({ searchedMovies: responseObject.Search })
-    //   );
-    //  }
-
-render () {
- 
-  return (
-    <Router>
-      <div className="App">
-                
-       <Container>         
-        <Navbar style={{padding: '20px'}}>
-              <Navbar.Brand href="#home" style={{color: '#fff'}}>AC/DC</Navbar.Brand>
-              <Nav className="mr-auto ">
-                <Link to="/" className='ml-4 mr-3 text-white'>Home</Link>
-                <Link to="/Albums" className='text-white'>Albums</Link>
+     }
+     return (
+      <div className={ 
+        ( typeof weather.main  != "undefined") 
+      ? ( (weather.main.temp > 16)
+           ? 'back-sun-1' : 'back-sun' ) 
+           : 'back-sun'
+           
+      }>
+     
+        <div className='container'>
+          <Row style={{display: 'flex', justifyContent: 'center'}}>
+            <Col lg={12} style={{textAlign: 'center'}}>
              
-              </Nav>
-              <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{borderRadius: '50px', padding: '5px 30px',border: 'none' }}/>
-                <Button variant="outline-info" style={{border: '1px solid #fff', color: '#fff', borderRadius: '50px', padding: '5px 30px'}}>Search</Button>
-              </Form>
-            </Navbar>
-          </Container>   
-        <Header title="Your tracklist for Anytime" />
+              <input type='text'
+                className='search-bar mr-3'
+                placeholder='Search...'
+                onChange={(e) => setQuery(e.target.value)}
+                value={query}
+                
+       
+                
+              />
+              <button className='btn' onClick={search} style={{background: 'none', border: 'none'}}><FontAwesomeIcon style={{color: '#fff'}} icon={faSearch}/></button>
 
-         <Route  path='/album' exact component={Albums} />
-          <Route
-            path="/album/:id"
-            exact
-            render={(props) => <DetailComponent {...props} tracks={['one', 'two']} />}
-          />
-  
+        {/* <h5>Weather for Anytime</h5> */}
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={12} style={{textAlign: 'center'}}>
+            {( typeof weather.main  != "undefined") ?
+            (
+                <div>
+                  <div className='weather-box'>
+                  
+                  <div className='location' style={{color: '#fff', fontSize: '30px'}}>
+                    {weather.name},  {weather.sys.country}
+                  </div>
+                  <div className='weather' style={{color: '#fff', fontSize: '20px', letterSpacing: '5px'}}>
+                      {weather.weather[0].description}
+                    </div>
+                  <div className='date text-white' >{dateBuilder(new Date())}</div>
+                    <div className='temp' style={{position: 'relative', color: '#fff', fontSize: '70px'}}>
+                      {/* {parseInt(Math.round((weather.main.temp - 32) * (5/9))  /100 * 10)}  */}
+                      {Math.round(weather.main.temp)} 
+                    </div>
+                    
+                  </div>
+                  </div>
+              ) : (<h2 style={{color : '#fff', marginTop: '100px'}}>Enter city</h2>)
+              }
+             
+
+            </Col>
+          </Row>
+        </div>
       </div>
-    </Router>
-  )
-}
-  
+    )
+     
 }
 
-export default App
+export default App;
